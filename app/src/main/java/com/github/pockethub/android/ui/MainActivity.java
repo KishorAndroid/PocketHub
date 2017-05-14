@@ -152,7 +152,7 @@ public class MainActivity extends BaseActivity implements
     }
 
     private void openWelcomeScreen() {
-        startActivity(new Intent(this, WelcomeActivity.class));
+        startActivity(new Intent(this, NewWelcomeActivity.class));
         finish();
     }
 

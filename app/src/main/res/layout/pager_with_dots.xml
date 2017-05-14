@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2015 PocketHub
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,52 +13,94 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    <data>
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar"
+        <variable
+            name="vm"
+            type="com.github.pockethub.android.viewmodels.NewWelcomeActivityViewModel" />
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:theme="@style/ToolbarTheme"
-            android:layout_alignParentTop="true"
-            android:minHeight="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:id="@+id/toolbar" />
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    </android.support.design.widget.AppBarLayout>
-    <FrameLayout
-        android:layout_width="match_parent"
-        app:layout_behavior="com.github.pockethub.android.ui.PatchedScrollingViewBehavior"
-        android:layout_height="match_parent">
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                app:theme="@style/ToolbarTheme" />
 
-        <com.github.pockethub.android.ui.ViewPager
-            android:id="@+id/vp_pages"
-            app:layout_behavior="com.github.pockethub.android.ui.PatchedScrollingViewBehavior"
+        </android.support.design.widget.AppBarLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            app:layout_behavior="com.github.pockethub.android.ui.PatchedScrollingViewBehavior">
 
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            style="@style/ListSpinner"
-            android:layout_gravity="center"
-            android:visibility="gone" />
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="@style/ListSpinner"
+                android:layout_gravity="center"
+                android:visibility="gone" />
 
-        <com.github.pockethub.android.ui.view.DotPageIndicator
-            android:id="@+id/dot_page_indicator"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="16dp"/>
-    </FrameLayout>
-</android.support.design.widget.CoordinatorLayout>
+            <Button
+                android:id="@+id/btn_done"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom|right"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:text="@string/done"
+                android:onClick="@{vm::closeAndOpenLogin}"
+                android:textAllCaps="true"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead.Inverse"
+                android:textColor="@color/primary_dark"
+                android:textSize="18sp"
+                android:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/btn_next"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:onClick="@{vm::showNextPage}"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="right|bottom"
+                android:textColor="@color/primary_dark"
+                app:srcCompat="@drawable/ic_arrow_right" />
+
+            <com.github.pockethub.android.ui.view.DotPageIndicator
+                android:id="@+id/dot_page_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/btn_done"
+                android:layout_marginBottom="16dp" />
+
+            <com.github.pockethub.android.ui.ViewPager
+                android:id="@+id/vp_pages"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/dot_page_indicator"
+                android:layout_marginBottom="@dimen/fab_margin"
+                app:layout_behavior="com.github.pockethub.android.ui.PatchedScrollingViewBehavior"
+                app:viewPagerAdapter="@{vm.adapter}" />
+        </RelativeLayout>
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

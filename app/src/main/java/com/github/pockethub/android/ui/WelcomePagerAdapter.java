@@ -33,7 +33,7 @@ public class WelcomePagerAdapter extends PagerAdapter {
     private final int[] images;
     private int view;
 
-    public WelcomePagerAdapter(int layoutId, int[] images, String[] info, String[] titles){
+    public WelcomePagerAdapter(int layoutId, int[] images, String[] info, String[] titles) {
         view = layoutId;
         this.images = images;
         this.info = info;
@@ -50,16 +50,14 @@ public class WelcomePagerAdapter extends PagerAdapter {
         View v = LayoutInflater.from(container.getContext())
                 .inflate(view, container, false);
 
-        TextView titleText = ((TextView)v.findViewById(R.id.tv_title));
-        TextView infoText = ((TextView)v.findViewById(R.id.tv_info));
+        TextView titleText = ((TextView) v.findViewById(R.id.tv_title));
+        TextView infoText = ((TextView) v.findViewById(R.id.tv_info));
         titleText.setText(titles[position]);
         infoText.setText(info[position]);
-        if (position == 0) {
-            @ColorInt int primaryColor = titleText.getResources().getColor(R.color.primary);
-            titleText.setTextColor(primaryColor);
-            infoText.setTextColor(primaryColor);
-        }
-        ((ImageView)v.findViewById(R.id.iv_art)).setImageResource(images[position]);
+        @ColorInt int primaryColor = titleText.getResources().getColor(R.color.primary);
+        titleText.setTextColor(primaryColor);
+        infoText.setTextColor(primaryColor);
+        ((ImageView) v.findViewById(R.id.iv_art)).setImageResource(images[position]);
 
         container.addView(v);
         return v;
