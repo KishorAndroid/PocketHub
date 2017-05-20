@@ -7,7 +7,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.github.pockethub.android.R;
 import com.github.pockethub.android.databinding.PagerWithDotsBinding;
-import com.github.pockethub.android.viewmodels.NewWelcomeActivityViewModel;
+import com.github.pockethub.android.viewmodels.NewWelcomeViewModel;
 
 public class NewWelcomeActivity extends AppCompatActivity {
 
@@ -17,7 +17,7 @@ public class NewWelcomeActivity extends AppCompatActivity {
 
         PagerWithDotsBinding binding = DataBindingUtil.setContentView(this, R.layout.pager_with_dots);
 
-        NewWelcomeActivityViewModel viewModel = new NewWelcomeActivityViewModel(this, binding);
+        NewWelcomeViewModel viewModel = new NewWelcomeViewModel(this, binding);
 
         binding.setVm(viewModel);
 

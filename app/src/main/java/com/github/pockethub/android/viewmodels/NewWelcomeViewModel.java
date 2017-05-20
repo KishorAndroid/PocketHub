@@ -16,13 +16,13 @@ import com.github.pockethub.android.ui.WelcomePagerAdapter;
  * Created by kishorandroid on 01/05/17.
  */
 
-public class NewWelcomeActivityViewModel {
+public class NewWelcomeViewModel {
 
     private Context mContext;
     public WelcomePagerAdapter adapter;
     private PagerWithDotsBinding mBinding;
 
-    public NewWelcomeActivityViewModel(Context context, PagerWithDotsBinding binding) {
+    public NewWelcomeViewModel(Context context, PagerWithDotsBinding binding) {
         mContext = context;
         mBinding = binding;
         adapter = new WelcomePagerAdapter(R.layout.welcome_pager_item,

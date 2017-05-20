@@ -20,7 +20,7 @@
 
         <variable
             name="vm"
-            type="com.github.pockethub.android.viewmodels.NewWelcomeActivityViewModel" />
+            type="com.github.pockethub.android.viewmodels.NewWelcomeViewModel" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout
